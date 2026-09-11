@@ -181,12 +181,12 @@
       text-wrap: nowrap;
     }
 
-    #namecard:active {
+    #namecard.active {
       background-color: white;
     }
 
-    #namecard:active>#currname,
-    #namecard:active>#currnickname {
+    #namecard.active>#currname,
+    #namecard.active>#currnickname {
       z-index: 1;
     }
 
@@ -1276,7 +1276,21 @@
         addteam(e.target);
       }
     });
-    document.body.addEventListener("touchstart", () => {passive: true});
+    namecard.addEventListener("pointerdown", () => {
+      namecard.classList.add("active");
+    });
+
+    namecard.addEventListener("pointerup", () => {
+      namecard.classList.remove("active");
+    });
+
+    namecard.addEventListener("pointercancel", () => {
+      namecard.classList.remove("active");
+    });
+
+    namecard.addEventListener("pointerleave", () => {
+      namecard.classList.remove("active");
+    });
   </script>
 </body>
 
